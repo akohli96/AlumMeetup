@@ -81,6 +81,18 @@ DATABASES = {
     }
 }
 
+if 'TRAVIS' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.contrib.gis.db.backends.postgis',
+            'NAME': 'travis',
+            'USER': 'testuser',
+            'PASSWORD': 'password',
+            'HOST': 'localhost',
+            'PORT': os.getenv('PGPORT'),
+        },
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
