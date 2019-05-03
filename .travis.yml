@@ -12,6 +12,9 @@ addons:
       - postgresql-10-postgis-2.4
       - postgresql-10-postgis-2.4-scripts
       - postgresql-client-10
+      - binutils
+      - libproj-dev
+      - gdal-bin
 
 env:
   global:
