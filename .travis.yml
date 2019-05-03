@@ -13,7 +13,7 @@ addons:
       - postgresql-10-postgis-2.4-scripts
       - postgresql-client-10
       - binutils
-      - ibproj-dev
+      - libproj-dev
       - gdal-bin
 
 env:
