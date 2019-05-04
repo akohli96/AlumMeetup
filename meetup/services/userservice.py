@@ -49,4 +49,3 @@ def generate_home_view(request):
     events_eligble = Event.objects.filter(location=curr_user.profile.location).filter(public=True)
     past_meetups = events_eligble.filter(date__lte=timezone.now().today())[0:5]
     return {'profiles':profiles,'past_meetups':past_meetups}
-    #Profile.objects.exclude(user=u).filter(location=u.profile.location)
