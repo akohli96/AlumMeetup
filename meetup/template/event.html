@@ -1,0 +1,14 @@
+<h2>Evemt</h2>
+
+<p>{{ event.id }} Event</p>
+
+
+
+<p>{{ host.user.username }} was host</p>
+
+<p>{{ location.city }} was city</p>
+
+{% for guest in guests  %}
+  <p>{{ guest.user.username }} is invited</p>
+{% endfor %}
+
