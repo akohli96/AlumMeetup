@@ -1,0 +1,7 @@
+<h2>Profile</h2>
+<form method="POST" class="profile-form">{% csrf_token %}
+    {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+            {{ location_form.as_p }}
+    <button type="submit" class="save btn btn-default">Save</button>
+</form>
