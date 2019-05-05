@@ -1,0 +1,8 @@
+<h2>Home</h2>
+{% for user in same_city_users  %}
+  <p>{{ user.user.username }} is in town</p>
+{% endfor %}
+
+{% for event in meetups  %}
+  <p>{{ event.id }} happened</p>
+{% endfor %}

@@ -7,7 +7,6 @@ from meetup.services.userservice import *
 def home(request):
     if request.method == 'GET':
         home_view = generate_home_view(request)
-        print(home_view['past_meetups'])
         return render(request, 'template/home.html', {'same_city_users':home_view['profiles'],'meetups':home_view['past_meetups']})
 
 def profile(request):
