@@ -1,0 +1,18 @@
+<form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button>
+</form>
+<form method="post">
+    {% csrf_token %}
+<ul>
+  {% for user in filter.qs %}
+  <li>{{ user.user.username }}</li>
+  <input type="checkbox" name="user[]" value="{{user.user.id}}" /><br />
+
+ {% endfor %}
+
+</ul>
+{{ event_form.as_p }}
+<button type="send">Invite selected users to event</button>
+</form>
+
