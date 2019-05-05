@@ -42,3 +42,10 @@ def process_profile_view(request):
         #Maybe to DB layer
     else:
         raise Exception("Form not valid")   
+
+def generate_home_view(request):
+    curr_user = User.objects.get(id=request.user.id)
+    profiles =Profile.objects.exclude(user=curr_user).filter(location=curr_user.profile.location).order_by('user__last_login')[0:5]
+    events_eligble = Event.objects.filter(location=curr_user.profile.location).filter(public=True)
+    past_meetups = events_eligble.filter(date__lte=timezone.now().today())[0:5]
+    return {'profiles':profiles,'past_meetups':past_meetups}
