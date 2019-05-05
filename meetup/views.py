@@ -1,14 +1,16 @@
 
 from django.shortcuts import render,redirect,get_object_or_404
-
+from django.contrib.auth.decorators import login_required
 from meetup.services.userservice import *
 
 
+@login_required
 def home(request):
     if request.method == 'GET':
         home_view = generate_home_view(request)
         return render(request, 'template/home.html', {'same_city_users':home_view['profiles'],'meetups':home_view['past_meetups']})
 
+@login_required
 def profile(request):
     if request.method == 'POST' :
         process_profile_view(request)
@@ -17,6 +19,7 @@ def profile(request):
         forms = generate_profile_view(request)
         return render(request, 'template/profile.html', forms)
 
+@login_required
 def event_by_id(request,event_id):
     #Push to service layer
     event = get_object_or_404(Event,id=uuid.UUID(event_id))
