@@ -1,8 +1,13 @@
+{% load staticfiles %}
+<head>
+    <link rel="stylesheet" href="{% static 'meetup/css/base.css' %}">
+</head>
+<main>
 <h2>Home</h2>
 {% for user in same_city_users  %}
   <p>{{ user.user.username }} is in town</p>
 {% endfor %}
-
+</main>
 {% for event in meetups  %}
   <p>{{ event.id }} happened</p>
   <p>{{ event.date }} happened</p>
