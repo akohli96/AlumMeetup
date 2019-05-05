@@ -17,9 +17,11 @@ class CustomUserAdmin(UserAdmin):
             'classes': ('wide',),
             'fields': ('email', 'password1', 'password2','username','first_name','last_name'),}),)
        
+class EventAdmin(admin.ModelAdmin):
+    readonly_fields = ('id',)
 
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
 admin.site.register(Profile)
 admin.site.register(Location)
-admin.site.register(Event)
+admin.site.register(Event,EventAdmin)

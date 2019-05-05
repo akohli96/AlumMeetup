@@ -3,7 +3,7 @@ from django.db import models
 import uuid
 from django.contrib.auth.models import User
 from django.utils import timezone
-
+from django.db import migrations, models
 class Location(models.Model):
     city = models.CharField(max_length=50)
     country = models.CharField(max_length=50)
@@ -29,6 +29,9 @@ class Profile(models.Model):
     school = models.CharField(max_length=50,choices=MAJOR_CHOICES)
     location = models.ForeignKey(Location,null=True)
 
+    def __unicode__ (self):
+        return '<User %s>' % self.user.username
+
     def gender_verbose(self):
         return dict(Profile.GENDER_CHOICES)[self.gender]
 
@@ -48,5 +51,3 @@ class Event(models.Model):
 
     date = models.DateField(default=timezone.now)
     modified = AutoDateTimeField(default=timezone.now)
-
-

@@ -1,6 +1,7 @@
 import django_filters
 from meetup.repository.models import *
 from django import forms
+from meetup.services.notifyservice import invite
 
 
 class UserFilter(django_filters.FilterSet):
@@ -19,13 +20,16 @@ class EventForm(forms.ModelForm):
 
 def invite_send(host,particpants_list,date):
     new_event = create_and_save_event(host,particpants_list,date)
+    invite(new_event)
     return
 
 def create_and_save_event(host,particpants_list,date):
     event = Event.objects.create(date=date)
-    profiles = Profile.objects.filter(pk__in=particpants_list)
+    #profiles = Profile.objects.filter(pk__in=particpants_list) Investigate
     event.host.add(host.profile)
-    event.guest.add(*profiles)
+    for participant in particpants_list:
+        profile = Profile.objects.get(user_id=int(participant))
+        event.guest.add(profile)
     event.location.add(host.profile.location)
     event.save()
     return event

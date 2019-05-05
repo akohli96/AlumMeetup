@@ -20,7 +20,8 @@ def profile(request):
         forms = generate_profile_view(request)
         return render(request, 'template/profile.html', forms)
 
-def event(request):
+@login_required
+def invite(request):
     event_form = EventForm()
     if request.method == 'GET':
         #push to service
