@@ -6,4 +6,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^meetup/',include('meetup.urls')),
+    url(r'^ meetup/notifications', include('notify.urls', 'notifications')),
 ]
