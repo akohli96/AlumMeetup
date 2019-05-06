@@ -1,7 +1,13 @@
-<h2>Profile</h2>
-<form method="POST" class="profile-form">{% csrf_token %}
-    {{ user_form.as_p }}
-            {{ profile_form.as_p }}
-            {{ location_form.as_p }}
-    <button type="submit" class="save btn btn-default">Save</button>
-</form>
+{% extends 'template/base.html' %} {% block content %}
+<header>
+    <h3>
+        Edit your profile
+    </h3>
+</header>
+<main>
+    <form method="POST">{% csrf_token %} {% for field in user_form %} <b>{{field.label}}</b> {{ field }} {% endfor %} {{ profile_form.as_table }} {{ location_form.as_table }}
+
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+</main>
+{% endblock %}
