@@ -1,14 +1,24 @@
-<h2>Evemt</h2>
+{% extends 'template/base.html' %} {% block content %}
 
-<p>{{ event.id }} Event</p>
+<header>
+    <h3>
+        Check out the event {{ event.name }} hosted by {{host.user.username}}
+    </h3>
+</header>
+<main>
 
+    <div class="grid">
+        <div class="box">
+            <p>City : {{ location.city }}</p>
+            <p>Place : {{ event.place }}</p>
+        </div>
+        <div class="box">
+            <h4 color="#3973ac">Friend list</h4>
+            {% for guest in guests %}
+            <h5>{{ guest.user.username }}</h5>
+            {% endfor %}
+        </div>
+    </div>
 
-
-<p>{{ host.user.username }} was host</p>
-
-<p>{{ location.city }} was city</p>
-
-{% for guest in guests  %}
-  <p>{{ guest.user.username }} is invited</p>
-{% endfor %}
-
+</main>
+{% endblock %}
