@@ -1,0 +1,27 @@
+{% extends 'template/base.html' %} {% block content %}
+
+<header>
+
+    <h3>
+        {{user.get_username}} Invites!
+    </h3>
+</header>
+<main>
+    <form method="post">
+        {% for notification in notifications %}
+        <div class="grid">
+            <div class="box">
+                <a href="{% url 'meetup:event_by_id' event_id=notification.target.id  %}">{{notification.target.name}}</a>
+                <td>
+                    <input type="checkbox" name="notification[]" value="{{notification.id}}" />
+
+                </td>
+            </div>
+            is at {{notification.target.date}} {% endfor %}
+        </div>
+
+        {% csrf_token %}
+        <button type="send">Delete selected notifcation of invites!</button>
+    </form>
+</main>
+{% endblock %}

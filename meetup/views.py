@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
 from meetup.services.userservice import *
 from meetup.services.eventservice import UserFilter,EventForm,invite_send
-
+from meetup.services.notifyservice import get_all_notifications,delete
 
 @login_required
 def home(request):
@@ -43,4 +43,11 @@ def event_by_id(request,event_id):
     guests = event.guest.all()
     return render(request, 'template/event.html', {'event':event,'host':host,'location':location,'guests':guests})
 
+@login_required
+def notification(request):
+    notifications = get_all_notifications(request.user)
+    if request.method == 'POST':
+        notifications_to_delete=request.POST.getlist('notification[]')
+        delete(notifications_to_delete,request.user)
 
+    return render(request, 'template/notification.html', {'notifications':notifications})

@@ -1,6 +1,15 @@
 from notifications.signals import notify
+from notifications.models import *
 from meetup.models import *
 #<actor> <verb> <target> <created>
+
+def get_all_notifications(user):
+    return user.notifications.all()
+
+def delete(notifications_to_delete,recepient):
+    for id in notifications_to_delete:
+        notification = Notification.objects.get(recipient=recepient,id=id)
+        notification.delete()
 
 def invite(event):
     profiles = event.guest.all()
