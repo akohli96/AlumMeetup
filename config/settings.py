@@ -13,9 +13,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY','MICHnat@g2a@1yade-!d@japh&ps4b$2+%c2w)
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-LOGIN_REDIRECT_URL = 'meetup.home'
-LOGIN_URL = 'meetup.login'
-LOGOUT_REDIRECT_URL = 'meetup.login'
+LOGIN_REDIRECT_URL = '/meetup/home/'
+LOGIN_URL = '/meetup/login'
+LOGOUT_REDIRECT_URL = '/meetup/login'
 # Application definition
 
 INSTALLED_APPS = [
