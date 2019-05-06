@@ -40,5 +40,7 @@ Feel free to login with test and test to move around the app.
 5. User interface : The user interface is critical to user experience and currently is simple.
 
 ##### Features
-1. Integration with school specific technology using social login. Something like https://documentation.its.umich.edu/api-directory would be handy.
-2. User notification on unread invites. Currently, the user has to go to their inbox to check the invites.
+1. Integration with school specific technology using social login: Something like https://documentation.its.umich.edu/api-directory would be handy.
+2. User notification on unread invites: Currently, the user has to go to their inbox to check the invites.
+3. Maps and cities : There can be a map on invite page with info on top locations that can be used to determine meetup location and integration with packages like django-cities too. I did start out by using postgis but prioritized other features.
+4. Advanced 
