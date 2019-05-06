@@ -15,7 +15,7 @@ def home(request):
 def profile(request):
     if request.method == 'POST' :
         process_profile_view(request)
-        return redirect('home')
+        return redirect('meetup:home')
     else :
         forms = generate_profile_view(request)
         return render(request, 'template/profile.html', forms)
@@ -31,7 +31,7 @@ def invite(request):
     else:
         selected_users=request.POST.getlist('user[]')
         invite_send(request.user,selected_users,request.POST['date'])        
-        return redirect('home')
+        return redirect('meetup:home')
     
 
 @login_required
