@@ -1,0 +1,19 @@
+{% extends 'template/base.html' %} {% block content %}
+
+<header>
+
+    <h3>
+        {{user.get_username}} Invites!
+    </h3>
+</header>
+<main>
+    {% for notification in notifications %}
+    <div class="grid">
+        <div class="box">
+            <a href="{% url 'meetup:event_by_id' event_id=notification.target.id  %}">{{notification.target.name}}</a>
+        </div>
+        is at {{notification.target.date}}
+    </div>
+    {% endfor %}
+</main>
+{% endblock %}
