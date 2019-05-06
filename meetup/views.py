@@ -22,9 +22,9 @@ def profile(request):
 
 @login_required
 def invite(request):
-    event_form = EventForm(initial = {'name' : request.user.username + " event","place" : request.user.profile.location.city + " Coffee shop"})
     if request.method == 'GET':
         #push to service
+        event_form = EventForm(initial = {'name' : request.user.username + " event","place" : request.user.profile.location.city + " Coffee shop"})
         user_list = Profile.objects.all()
         user_filter = UserFilter(request.GET, queryset=user_list)
         return render(request, 'template/invite.html', {'filter': user_filter,'event_form':event_form})

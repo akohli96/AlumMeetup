@@ -69,10 +69,15 @@ div:nth-child(5) {
     grid-row-start: 3;
 }
 
+h4 {
+    color: #3973ac;
+}
+
 .box {
     border-radius: 4px;
     padding: 12px;
     font-size: 150%;
+    color: #2F4F4F
 }
 
 .grid {
@@ -84,4 +89,16 @@ div:nth-child(5) {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-auto-rows: minmax(50px, auto);
     grid-gap: 1em;
+}
+
+.module {
+    /* Demo-Specific Styles */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    /* Flex Fallback */
+    margin-left: 5px;
+    margin-right: 5px;
+    flex: 1 1 200px;
 }
