@@ -6,9 +6,10 @@ from meetup.models import *
 def get_all_notifications(user):
     return user.notifications.all()
 
-def delete(id,recepient):
-    notification = Notification.objects.get(recipient=recepient,id=id)
-    notification.delete()
+def delete(notifications_to_delete,recepient):
+    for id in notifications_to_delete:
+        notification = Notification.objects.get(recipient=recepient,id=id)
+        notification.delete()
 
 def invite(event):
     profiles = event.guest.all()

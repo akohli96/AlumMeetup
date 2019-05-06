@@ -47,8 +47,7 @@ def event_by_id(request,event_id):
 def notification(request):
     notifications = get_all_notifications(request.user)
     if request.method == 'POST':
-            notifications_to_delete=request.POST.getlist('notification[]')
-            for notification in notifications_to_delete:
-                    delete(notification,request.user)
+        notifications_to_delete=request.POST.getlist('notification[]')
+        delete(notifications_to_delete,request.user)
 
     return render(request, 'template/notification.html', {'notifications':notifications})
