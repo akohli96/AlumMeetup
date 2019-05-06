@@ -1,4 +1,4 @@
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator,MinLengthValidator
 from django.db import models
 import uuid
 from django.contrib.auth.models import User
@@ -48,6 +48,7 @@ class Event(models.Model):
     host = models.ManyToManyField(Profile, related_name='host_profile')
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     guest = models.ManyToManyField(Profile) #host always part of list
-
-    date = models.DateField(default=timezone.now)
+    name = models.CharField(max_length=50,validators=[MinLengthValidator(1)])
+    place = models.CharField(max_length=50,validators=[MinLengthValidator(1)])
+    date = models.DateTimeField(default=timezone.now)
     modified = AutoDateTimeField(default=timezone.now)

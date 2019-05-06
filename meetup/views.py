@@ -22,7 +22,7 @@ def profile(request):
 
 @login_required
 def invite(request):
-    event_form = EventForm()
+    event_form = EventForm(initial = {'name' : request.user.username + " event","place" : request.user.profile.location.city + " Coffee shop"})
     if request.method == 'GET':
         #push to service
         user_list = Profile.objects.all()
@@ -30,7 +30,7 @@ def invite(request):
         return render(request, 'template/invite.html', {'filter': user_filter,'event_form':event_form})
     else:
         selected_users=request.POST.getlist('user[]')
-        invite_send(request.user,selected_users,request.POST['date'])        
+        invite_send(request.user,selected_users,request.POST['date'],request.POST['name'],request.POST['place'])        
         return redirect('meetup:home')
     
 

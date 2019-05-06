@@ -8,17 +8,15 @@
 
 
 <main>
-    <div class="wrapper">
 
-        {% for user in same_city_users %}
-        <div>
-            <p>{{ user.user.username }} is in town</p>
-        </div>
-        {% endfor %} {% for event in meetups %}
-        <div>
-            <p>{{ event.id }} happened recently</p>
-        </div>
-        {% endfor %}
+    {% for user in same_city_users %}
+    <div>
+        <p>{{ user.user.username }} is in town</p>
     </div>
+    {% endfor %} {% for event in meetups %}
+    <div>
+        <p>{{ event.id }} happened recently</p>
+    </div>
+    {% endfor %}
 </main>
 {% endblock %}
