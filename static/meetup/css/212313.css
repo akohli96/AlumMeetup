@@ -85,16 +85,3 @@ div:nth-child(5) {
     grid-auto-rows: minmax(50px, auto);
     grid-gap: 1em;
 }
-
-.module {
-    /* Demo-Specific Styles */
-    background: #eaeaea;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 200px;
-    /* Flex Fallback */
-    margin-left: 5px;
-    margin-right: 5px;
-    flex: 1 1 200px;
-}
