@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  db:
+    restart: always
+    image: postgres
+  web:
+    build: .
+    command: bash -c "python manage.py makemigrations meetup && python manage.py migrate && python manage.py loaddata seed.json && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    restart: always

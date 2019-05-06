@@ -12,11 +12,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY','MICHnat@g2a@1yade-!d@japh&ps4b$2+%c2w)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-LOGIN_REDIRECT_URL = 'home'
-LOGIN_URL = 'login'
-LOGOUT_REDIRECT_URL = 'login'
+ALLOWED_HOSTS = ['*']
+LOGIN_REDIRECT_URL = 'meetup.home'
+LOGIN_URL = 'meetup.login'
+LOGOUT_REDIRECT_URL = 'meetup.login'
 # Application definition
 
 INSTALLED_APPS = [
@@ -78,12 +77,12 @@ if os.getenv('GAE_APPLICATION', None):
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.contrib.gis.db.backends.postgis',
-            'HOST': '127.0.0.1',
+            'ENGINE': 'django.db.backends.postgresql',
+            'HOST': 'db',
             'PORT': '5432',
-            'NAME': NAME,
-            'USER': USER,
-            'PASSWORD': PASSWORD,
+            'NAME': 'postgres',
+            'USER': 'postgres',
+            'PASSWORD': 'postgres',
         }
     }
 
