@@ -1,0 +1,28 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Alumni meetup</title>
+    <link rel="stylesheet" href="{% static 'meetup/css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'meetup/css/skeleton.css' %}">
+    <link rel="stylesheet" href="{% static 'meetup/css/212313.css' %}">
+</head>
+
+
+{% block content %} {% endblock %}
+
+<aside>
+
+    <div><a href="{% url 'meetup:home' %}">Head home</a></div>
+    <div><a href="{% url 'meetup:profile' %}">Edit profile</a></div>
+    <div> <a href="{% url 'meetup:invite' %}">Schedule meetup</a></div>
+    <div><a href="{% url 'notifications:unread' %}">See invites</a> </div>
+
+
+</aside>
+<footer>
+    Copyright
+</footer>
+
+</html>

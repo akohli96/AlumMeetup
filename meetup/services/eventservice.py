@@ -16,15 +16,21 @@ class UserFilter(django_filters.FilterSet):
 class EventForm(forms.ModelForm):
     class Meta:
         model = Event
-        fields = ('date',)
+        fields = ('date','name','place')
 
-def invite_send(host,particpants_list,date):
-    new_event = create_and_save_event(host,particpants_list,date)
+        def __init__(self, *args,**kwargs):
+            super(EventForm, self).__init__(*args, **kwargs)    
+            self.fields['date'] = forms.DateTimeField(input_formats=['%d/%m/%Y %H:%M'])
+            self.fields['name'].initial = 'Event'
+            self.fields['place'].initial = 'Stadium'
+
+def invite_send(host,particpants_list,date,name,place):
+    new_event = create_and_save_event(host,particpants_list,date,name,place)
     invite(new_event)
     return
 
-def create_and_save_event(host,particpants_list,date):
-    event = Event.objects.create(date=date)
+def create_and_save_event(host,particpants_list,date,name,place):
+    event = Event.objects.create(date=date,name=name,place=place)
     #profiles = Profile.objects.filter(pk__in=particpants_list) Investigate
     event.host.add(host.profile)
     for participant in particpants_list:
