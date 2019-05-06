@@ -46,5 +46,9 @@ def event_by_id(request,event_id):
 @login_required
 def notification(request):
     notifications = get_all_notifications(request.user)
-    print(notifications.first().target.name)
+    if request.method == 'POST':
+            notifications_to_delete=request.POST.getlist('notification[]')
+            for notification in notifications_to_delete:
+                    delete(notification,request.user)
+
     return render(request, 'template/notification.html', {'notifications':notifications})
